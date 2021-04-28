@@ -1,15 +1,15 @@
 <template>
   <div class="tabby-wrapper">
     <tabby-UI></tabby-UI>
-    <tabby-notes></tabby-notes>
+    <!-- <tabby-notes></tabby-notes> -->
   </div>
 </template>
 
 <script>
 import TabbyUI from "./TabbyUI.vue";
-import TabbyNotes from "./TabbyNotes.vue";
+// import TabbyNotes from "./TabbyNotes.vue";
 export default {
-  components: { "tabby-UI": TabbyUI, TabbyNotes },
+  components: { "tabby-UI": TabbyUI },
 };
 </script>
 

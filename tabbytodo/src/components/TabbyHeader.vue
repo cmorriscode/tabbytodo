@@ -14,6 +14,7 @@
 <script>
 import moment from "moment";
 moment().format();
+
 export default {
   data() {
     return {
@@ -25,8 +26,8 @@ export default {
     getCurrentTime() {
       const day = moment().format("dddd, MMMM Do YYYY");
       const time = moment().format("h:mm:ss a");
-      this.currentTime = time;
       this.currentDay = day;
+      this.currentTime = time;
     },
   },
   computed: {},
@@ -43,6 +44,7 @@ export default {
   background: #fff;
   // background: linear-gradient(to right bottom, #0093e9, #80d0c7);
   padding: 24px 12px;
+  padding: 16px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,6 +54,7 @@ export default {
   .logo {
     p {
       font-size: 24px;
+      font-size: 26px;
       font-weight: 600;
       letter-spacing: 2px;
       color: hsl(173, 46%, 20%);

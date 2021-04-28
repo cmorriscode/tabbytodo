@@ -11,13 +11,14 @@
 
 <style lang="scss" scoped>
 .tabby-notes {
-  margin-left: 64px;
-  height: 800px;
-  width: 440px;
+  margin-top: 24px;
+  margin-left: 48px;
+  height: 650px;
+  width: 640px;
   border: 6px solid hsl(173, 46%, 50%);
   border-radius: 25px;
   background: hsl(173, 46%, 66%);
-  border: 4px solid hsl(202, 100%, 30%);
+  border: 2px solid hsl(202, 100%, 30%);
   padding: 0 8px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   background: linear-gradient(to right bottom, #80d0c7, #0093e9);
@@ -32,7 +33,7 @@
   }
 }
 textarea {
-  padding: 24px 20px;
+  padding: 16px 16px;
   resize: none;
   height: 90%;
   width: 100%;

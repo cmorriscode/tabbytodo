@@ -5,15 +5,27 @@
       <main-btn>Add Todo</main-btn>
     </div>
     <div class="tabby-todos-list">
-      Oh, c'mon. There has to be something todo. Add something and then get it
-      done.
+      <tabby-task />
+      <tabby-task />
+      <tabby-task />
+      <tabby-task />
+      <tabby-task />
     </div>
   </div>
 </template>
+<script>
+import TabbyTask from "./TabbyTask.vue";
+export default {
+  components: {
+    TabbyTask,
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .tabby-todos {
   padding: 16px 12px;
+  padding: 12px 12px;
   // border: 1px solid black;
 
   &-header {
@@ -22,12 +34,14 @@
     justify-content: space-between;
     h6 {
       font-size: 16px;
+      font-weight: 600;
+      color: #444;
     }
   }
 
   &-list {
     margin-top: 12px;
-    padding: 8px;
+    padding: 0px 16px;
     min-height: 360px;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }

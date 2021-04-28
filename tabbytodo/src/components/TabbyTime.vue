@@ -26,6 +26,8 @@ export default {};
 
   h6 {
     font-size: 16px;
+    color: #444;
+    font-weight: 600;
     // color: hsl(173, 46%, 25%);
   }
 
