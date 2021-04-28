@@ -1,13 +1,15 @@
 <template>
   <div class="tabby-wrapper">
     <tabby-UI></tabby-UI>
+    <tabby-notes></tabby-notes>
   </div>
 </template>
 
 <script>
 import TabbyUI from "./TabbyUI.vue";
+import TabbyNotes from "./TabbyNotes.vue";
 export default {
-  components: { "tabby-UI": TabbyUI },
+  components: { "tabby-UI": TabbyUI, TabbyNotes },
 };
 </script>
 
@@ -20,6 +22,6 @@ export default {
   background: linear-gradient(to right bottom, #0093e9, #80d0c7);
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 </style>

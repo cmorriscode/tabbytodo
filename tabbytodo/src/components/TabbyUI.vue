@@ -10,6 +10,7 @@
 import TabbyHeader from "./TabbyHeader.vue";
 import TabbyTime from "./TabbyTime.vue";
 import TabbyTodos from "./TabbyTodos.vue";
+
 export default {
   components: { TabbyHeader, TabbyTime, TabbyTodos },
 };
@@ -17,14 +18,13 @@ export default {
 
 <style lang="scss" scoped>
 .tabby-UI {
-  margin: 0 auto;
-  width: 960px;
-  height: 640px;
+  // margin: 0 auto;
+  min-width: 960px;
   // background: linear-gradient(to right bottom, #0093e9, #80d0c7);
   background: #fff;
   border-radius: 25px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  padding: 12px 24px;
+  padding: 12px 24px 36px;
   border: 4px solid hsl(202, 100%, 30%);
 }
 </style>

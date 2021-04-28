@@ -1,7 +1,7 @@
 <template>
   <div class="tabby-time">
     <div class="tabby-time-header">
-      <h6>What's Due?</h6>
+      <h6><i class="far fa-calendar-alt"></i> What's Due?</h6>
       <main-btn>Add Event</main-btn>
     </div>
     <div class="tabby-time-events">No events. Add one!</div>
@@ -26,6 +26,7 @@ export default {};
 
   h6 {
     font-size: 16px;
+    // color: hsl(173, 46%, 25%);
   }
 
   &-events {

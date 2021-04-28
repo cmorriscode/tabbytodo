@@ -3,11 +3,40 @@
     <div class="logo">
       <p><span>Tabby</span>Todo</p>
     </div>
+    <p>You know what todo. Lock in. Tab in.</p>
     <div class="tagline">
-      <p>You know what todo. Lock in. Tab in.</p>
+      <p class="current-day">{{ currentDay }}</p>
+      <p class="current-time">{{ currentTime }}</p>
     </div>
   </header>
 </template>
+
+<script>
+import moment from "moment";
+moment().format();
+export default {
+  data() {
+    return {
+      currentDay: null,
+      currentTime: null,
+    };
+  },
+  methods: {
+    getCurrentTime() {
+      const day = moment().format("dddd, MMMM Do YYYY");
+      const time = moment().format("h:mm:ss a");
+      this.currentTime = time;
+      this.currentDay = day;
+    },
+  },
+  computed: {},
+  mounted() {
+    setInterval(() => {
+      this.getCurrentTime();
+    }, 1000);
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .tabby-header {
@@ -25,6 +54,13 @@
       font-size: 24px;
       font-weight: 600;
       letter-spacing: 2px;
+      color: hsl(173, 46%, 20%);
+
+      // &:last-of-type {
+      //   font-size: 16px;
+      //   font-weight: 400;
+      //   letter-spacing: 0;
+      // }
 
       span {
         // color: hsl(60, 100%, 45%);
@@ -35,6 +71,16 @@
   .tagline {
     p {
       // color: hsl(202, 100%, 30%);
+    }
+    .current-time {
+      font-weight: 600;
+      text-align: right;
+      color: #555;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+    .current-day {
+      margin-bottom: 6px;
     }
   }
 }
