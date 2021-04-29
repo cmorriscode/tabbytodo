@@ -11,6 +11,8 @@
 
 <style lang="scss" scoped>
 .tabby-notes {
+  position: sticky;
+  top: 0;
   margin-top: 24px;
   margin-left: 48px;
   height: 650px;

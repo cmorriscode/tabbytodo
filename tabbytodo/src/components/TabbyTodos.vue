@@ -6,10 +6,10 @@
     </div>
     <div class="tabby-todos-list">
       <tabby-task class="urgent" />
-      <!-- <tabby-task class="urgent" />
+      <tabby-task class="urgent" />
       <tabby-task class="important" />
       <tabby-task class="low" />
-      <tabby-task class="low" /> -->
+      <tabby-task class="low" />
     </div>
   </div>
 </template>

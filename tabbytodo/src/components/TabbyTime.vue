@@ -1,15 +1,30 @@
 <template>
   <div class="tabby-time">
     <div class="tabby-time-header">
-      <h6><i class="far fa-calendar-alt"></i> What's Due?</h6>
+      <h6><i class="far fa-calendar-alt"></i> What's Due Today?</h6>
       <main-btn>Add Event</main-btn>
     </div>
-    <div class="tabby-time-events">No events. Add one!</div>
+    <div class="tabby-time-events">
+      <tabby-due />
+      <tabby-due />
+      <tabby-due />
+      <tabby-due />
+      <tabby-due />
+      <tabby-due />
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import TabbyDue from "./TabbyDue.vue";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    TabbyDue,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,11 +48,11 @@ export default {};
   }
 
   &-events {
-    margin-top: 12px;
+    // margin-top: 12px;
     padding: 8px;
     min-height: 64px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    // border: 1px solid rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
