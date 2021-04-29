@@ -31,6 +31,17 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   margin-top: 24px;
+
+  &.urgent {
+    border-left: 6px solid hsl(30, 100%, 46%);
+  }
+  &.important {
+    border-left: 6px solid hsl(215, 100%, 46%);
+  }
+
+  &.low {
+    border-left: 6px solid hsl(185, 100%, 46%);
+  }
   &-header {
     display: flex;
     justify-content: space-between;
@@ -39,8 +50,8 @@
       font-size: 20px;
       color: hsl(215, 100%, 46%);
       color: #333;
-      color: hsl(30, 100%, 46%);
-      color: hsl(185, 100%, 46%);
+      color: hsl(30, 41%, 44%);
+      color: #333;
     }
 
     .actions {

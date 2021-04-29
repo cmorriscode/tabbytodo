@@ -26,6 +26,7 @@ export default {};
 
   h6 {
     font-size: 16px;
+    font-size: 18px;
     color: #444;
     font-weight: 600;
     // color: hsl(173, 46%, 25%);
@@ -36,6 +37,7 @@ export default {};
     padding: 8px;
     min-height: 64px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
