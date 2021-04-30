@@ -25,8 +25,9 @@ export default {
   border-radius: 4px;
   // max-width: 180px;
   // max-width: 225px;
-  min-width: 225px;
   min-width: 200px;
+  min-width: 225px;
+  max-width: 225px;
   &--header {
     // background: linear-gradient(to right bottom, #80d0c7, #0093e9);
     font-size: 16px;

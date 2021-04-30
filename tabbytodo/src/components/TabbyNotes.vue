@@ -35,7 +35,6 @@
   height: 650px;
   width: 640px;
   width: 640px;
-  // min-width: 640px;
   border: 6px solid hsl(173, 46%, 50%);
   border-radius: 25px;
   background: hsl(173, 46%, 66%);

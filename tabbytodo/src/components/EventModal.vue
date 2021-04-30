@@ -17,10 +17,10 @@
             />
           </div>
           <div class="form-group">
-            <label for="event">What time?</label>
+            <label for="time">What time?</label>
             <input
               type="text"
-              id="event"
+              id="time"
               placeholder="e.g. 5PM, Before lunch, ASAP"
               v-model="eventTime"
             />
@@ -50,6 +50,7 @@ export default {
     addEvent() {
       const title = this.eventTitle;
       const time = this.eventTime;
+
       this.$emit("submitted", title, time);
       this.eventTitle = "";
       this.eventTime = "";

@@ -29,7 +29,7 @@ export default {
   width: 1280px;
   width: 1200px;
   width: 1440px;
-  max-width: 100%;
+  // max-width: 960px;
   // background: linear-gradient(to right bottom, #0093e9, #80d0c7);
   background: #fff;
   border-radius: 25px;

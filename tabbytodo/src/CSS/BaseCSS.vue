@@ -1,3 +1,7 @@
+<template>
+  <div v-if="false"></div>
+</template>
+
 <style lang="scss">
 *,
 ::before,
@@ -9,6 +13,7 @@
 html {
   font-family: "Quicksand", sans-serif;
 }
+
 a {
   text-decoration: none;
 }

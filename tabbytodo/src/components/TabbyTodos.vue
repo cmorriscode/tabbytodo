@@ -2,7 +2,7 @@
   <div class="tabby-todos">
     <div class="tabby-todos-header">
       <h6><i class="fas fa-scroll"></i> Tab it so you're able Todo it.</h6>
-      <main-btn>Add Todo</main-btn>
+      <main-btn><i class="fas fa-plus"></i> Add Todo</main-btn>
     </div>
     <div class="tabby-todos-list">
       <tabby-task class="urgent" />

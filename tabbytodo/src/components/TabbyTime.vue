@@ -2,7 +2,9 @@
   <div class="tabby-time">
     <div class="tabby-time-header">
       <h6><i class="far fa-calendar-alt"></i> What's Due Today?</h6>
-      <main-btn @click="openEventModal">Add Event</main-btn>
+      <main-btn @click="openEventModal"
+        ><i class="fas fa-plus"></i> Add Event</main-btn
+      >
     </div>
     <div class="tabby-time-events">
       <tabby-due
@@ -11,19 +13,18 @@
         :title="due.title"
         :time="due.time"
       />
-      <!-- <tabby-due title="Pet Kiko" time="9PM" />
-      <tabby-due title="Call John Rhoades At Some Point" time="Before Lunch" /> -->
+      <tabby-due title="Pet Kiko" time="9PM" />
+      <tabby-due title="Call John Rhoades At Some Point" time="Before Lunch" />
       <!-- <tabby-due />
       <tabby-due />
       <tabby-due /> -->
     </div>
-    <transition>
-      <event-modal
-        v-if="modalOpen"
-        @closeEventModal="closeEventModal"
-        @submitted="addEvent"
-      />
-    </transition>
+
+    <event-modal
+      v-if="modalOpen"
+      @closeEventModal="closeEventModal"
+      @submitted="addEvent"
+    />
   </div>
 </template>
 
@@ -93,8 +94,10 @@ export default {
     // margin-top: 12px;
     padding: 8px;
     // min-height: 64px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    grid-gap: 16px;
 
     // border: 1px solid rgba(0, 0, 0, 0.1);
     // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
