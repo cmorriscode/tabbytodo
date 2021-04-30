@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 a {
+  cursor: pointer;
   display: inline-block;
   padding: 8px 16px;
   border-radius: 4px;

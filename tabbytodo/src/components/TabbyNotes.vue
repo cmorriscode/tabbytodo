@@ -6,17 +6,36 @@
     <textarea
       placeholder="Write anything. Think through things. Preview ideas. It's important to remember that you won't remember. You ain't that good."
     ></textarea>
+    <!-- <div class="created-by">
+      <img src="https://charlesmorris.com/img/cm_logo.ed1daa6a.png" alt="" />
+      <p>Built By: Charlie Morris</p>
+    </div> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 .tabby-notes {
+  .created-by {
+    margin-top: 32px;
+    p {
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    img {
+      display: block;
+      width: 44px;
+      margin: 0 auto;
+    }
+  }
   position: sticky;
-  top: 0;
+  top: 48px;
   margin-top: 24px;
   margin-left: 48px;
   height: 650px;
   width: 640px;
+  width: 640px;
+  // min-width: 640px;
   border: 6px solid hsl(173, 46%, 50%);
   border-radius: 25px;
   background: hsl(173, 46%, 66%);
