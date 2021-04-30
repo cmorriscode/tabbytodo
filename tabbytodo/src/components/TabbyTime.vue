@@ -8,13 +8,18 @@
     </div>
     <div class="tabby-time-events">
       <tabby-due
+        v-if="dues.length === 0"
+        title="Add an event!"
+        time="ASAP"
+      ></tabby-due>
+      <tabby-due
         v-for="due in dues"
         :key="due.id"
         :title="due.title"
         :time="due.time"
       />
-      <tabby-due title="Pet Kiko" time="9PM" />
-      <tabby-due title="Call John Rhoades At Some Point" time="Before Lunch" />
+      <!-- <tabby-due title="Pet Kiko" time="9PM" />
+      <tabby-due title="Call John Rhoades At Some Point" time="Before Lunch" /> -->
       <!-- <tabby-due />
       <tabby-due />
       <tabby-due /> -->
@@ -41,15 +46,15 @@ export default {
   methods: {
     renderDues() {
       const storedDues = JSON.parse(localStorage.getItem("dues"));
-
       if (storedDues) {
         this.dues = storedDues;
       } else {
-        this.dues = [{ title: "Add an event!", time: "ASAP", id: "1" }];
+        this.dues = [];
       }
     },
     addEvent(title, time) {
       const event = { title: title, time: time };
+
       this.dues.push(event);
       this.closeEventModal();
     },

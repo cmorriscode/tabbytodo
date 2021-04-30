@@ -18,7 +18,7 @@ export default {
   // justify-content: center;
   align-items: center;
   display: inline-block;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 8px 12px;
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-left: 4px solid #80d0c7;
