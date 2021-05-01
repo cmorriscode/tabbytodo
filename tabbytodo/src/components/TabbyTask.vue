@@ -37,14 +37,14 @@ export default {};
   margin-top: 24px;
 
   &.urgent {
-    border-left: 6px solid hsl(30, 100%, 46%);
+    border-left: 6px solid hsl(5, 55%, 56%);
   }
   &.important {
-    border-left: 6px solid hsl(215, 100%, 46%);
+    border-left: 6px solid #0093e9;
   }
 
   &.low {
-    border-left: 6px solid hsl(185, 100%, 46%);
+    border-left: 6px solid #80d0c7;
   }
   &-header {
     display: flex;

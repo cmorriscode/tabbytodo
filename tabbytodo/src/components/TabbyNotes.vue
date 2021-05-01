@@ -5,6 +5,8 @@
     </div>
     <textarea
       placeholder="Write anything. Think through things. Preview ideas. It's important to remember that you won't remember. You ain't that good."
+      v-model="notes"
+      @keypress="saveNotes"
     ></textarea>
     <!-- <div class="created-by">
       <img src="https://charlesmorris.com/img/cm_logo.ed1daa6a.png" alt="" />
@@ -12,6 +14,30 @@
     </div> -->
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      notes: "",
+    };
+  },
+  methods: {
+    saveNotes() {
+      localStorage.setItem("tabbyNotes", JSON.stringify(this.notes));
+    },
+  },
+  mounted() {
+    const getNotes = JSON.parse(localStorage.getItem("tabbyNotes"));
+
+    if (getNotes) {
+      this.notes = getNotes;
+    } else {
+      this.notes = "";
+    }
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .tabby-notes {
@@ -35,6 +61,8 @@
   height: 650px;
   width: 640px;
   width: 640px;
+  width: 520px;
+  max-width: 100%;
   border: 6px solid hsl(173, 46%, 50%);
   border-radius: 25px;
   background: hsl(173, 46%, 66%);
@@ -69,6 +97,12 @@ textarea {
   &:focus {
     border: 2px solid hsl(202, 100%, 56%);
     box-shadow: 0 6px 12px #80d0c7;
+  }
+}
+
+@media (max-width: 1125px) {
+  .tabby-notes {
+    display: none;
   }
 }
 </style>

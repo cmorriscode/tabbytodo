@@ -25,10 +25,12 @@ export default {
 <style lang="scss" scoped>
 .tabby-UI {
   // margin: 0 auto;
-  min-width: 960px;
-  width: 1280px;
-  width: 1200px;
+  // min-width: 960px;
+  // min-width: 1125px;
+  // width: 1280px;
+  // width: 1200px;
   width: 1440px;
+  max-width: 100%;
   // max-width: 960px;
   // background: linear-gradient(to right bottom, #0093e9, #80d0c7);
   background: #fff;

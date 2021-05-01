@@ -132,6 +132,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 12px;
     h6 {
       font-size: 16px;
       font-size: 18px;

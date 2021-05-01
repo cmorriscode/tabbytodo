@@ -29,6 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .tabby-due {
+  animation: fade 0.25s ease-in;
   height: 100%;
 
   // justify-content: center;
@@ -74,5 +75,22 @@ export default {
   }
   margin-left: 24px;
   margin-top: 12px;
+}
+
+@keyframes fade {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-100px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 </style>
