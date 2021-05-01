@@ -1,52 +1,50 @@
 <template>
   <teleport to="body">
-    <transition>
-      <div class="event-modal">
-        <div class="event-modal-header">
-          <p>Add Event</p>
-        </div>
-
-        <div class="event-modal-form">
-          <form @submit.prevent="addEvent">
-            <div class="form-group">
-              <label for="event">What's getting done today?</label>
-              <input
-                type="text"
-                id="event"
-                placeholder="Type event"
-                required="yes"
-                v-model="eventTitle"
-              />
-            </div>
-            <div class="form-group">
-              <label for="time">What time?</label>
-              <input
-                type="text"
-                id="time"
-                placeholder="e.g. 5PM, Before lunch, ASAP"
-                v-model="eventTime"
-              />
-            </div>
-
-            <div class="form-buttons">
-              <main-btn @click="closeEventModal">Cancel</main-btn>
-              <main-btn type="submit" @click="addEvent"
-                ><i class="fas fa-plus"></i> Add</main-btn
-              >
-            </div>
-          </form>
-        </div>
+    <div class="event-modal">
+      <div class="event-modal-header">
+        <p>Update Event</p>
       </div>
-    </transition>
+
+      <div class="event-modal-form">
+        <form @submit.prevent="updateEvent">
+          <div class="form-group">
+            <label for="event">Update your event</label>
+            <input
+              type="text"
+              id="event"
+              placeholder="Type event"
+              v-model="eventTitleUpdate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="time">What time?</label>
+            <input
+              type="text"
+              id="time"
+              placeholder="e.g. 5PM, Before lunch, ASAP"
+              v-model="eventTimeUpdate"
+            />
+          </div>
+
+          <div class="form-buttons">
+            <main-btn @click="closeUpdateModal">Cancel</main-btn>
+            <main-btn type="submit" @click="addEvent"
+              ><i class="fas fa-plus"></i> Add</main-btn
+            >
+          </div>
+        </form>
+      </div>
+    </div>
   </teleport>
 </template>
 
 <script>
 export default {
+  // props: ["eventTitleUpdate", "eventTimeUpdate"],
   data() {
     return {
-      eventTitle: "",
-      eventTime: "",
+      // eventTitleUpdate: "",
+      // eventTimeUpdate: "",
     };
   },
   methods: {
@@ -58,10 +56,10 @@ export default {
       this.eventTitle = "";
       this.eventTime = "";
     },
-    closeEventModal() {
-      this.eventTitle = "";
-      this.eventTime = "";
-      this.$emit("closeEventModal");
+    closeUpdateModal() {
+      this.eventTitleUpdate = "";
+      this.eventTimeEvent = "";
+      this.$emit("closeUpdateModal");
     },
   },
 };
@@ -69,19 +67,6 @@ export default {
 
 <style lang="scss" scoped>
 // Transitions
-
-.v-enter-from {
-  opacity: 0;
-}
-
-.v-enter-active {
-  transition: all 1s;
-  opacity: 0.5;
-}
-
-.v-enter-to {
-  opacity: 1;
-}
 
 .event-modal {
   width: 700px;
@@ -95,7 +80,6 @@ export default {
   border: 4px solid hsl(202, 100%, 30%);
   color: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-  animation: fade 0.15s;
 
   &-header {
     background: linear-gradient(to right bottom, #0093e9, #80d0c7);
@@ -146,20 +130,6 @@ export default {
         border: 1px solid rgba(0, 147, 233, 0.2);
       }
     }
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 </style>

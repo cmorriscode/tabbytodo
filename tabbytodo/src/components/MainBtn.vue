@@ -16,7 +16,7 @@ a {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 4px;
-  background: linear-gradient(to right bottom, hsl(173, 46%, 71%), #80d0c7);
+  background: linear-gradient(to right bottom, #93d7cf, #80d0c7);
   background: linear-gradient(
     to right bottom,
     hsl(173, 46%, 56%),
@@ -27,10 +27,24 @@ a {
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: all 0.35s;
+  font-weight: 500;
+
+  &.danger {
+    background: linear-gradient(
+      to right bottom,
+      hsl(5, 55%, 68%),
+      hsl(5, 55%, 56%)
+    );
+  }
 
   &:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-1px);
+  }
+
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translatey(0px);
   }
 }
 </style>

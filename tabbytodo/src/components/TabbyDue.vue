@@ -2,12 +2,28 @@
   <div class="tabby-due">
     <p class="tabby-due--header">{{ title }}</p>
     <p class="tabby-due--time">{{ time }}</p>
+    <div class="tabby-due--actions">
+      <div class="edit" @click="updateEvent(title, time)">
+        <i class="fas fa-edit"></i>
+      </div>
+      <div class="delete" @click="deleteEvent(id)">
+        <i class="fas fa-trash-alt"></i>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["title", "time"],
+  props: ["title", "time", "id"],
+  methods: {
+    deleteEvent(id) {
+      this.$emit("deleteEvent", id);
+    },
+    updateEvent(title, time) {
+      this.$emit("updateEvent", title, time);
+    },
+  },
 };
 </script>
 
@@ -39,6 +55,18 @@ export default {
     font-size: 16px;
     font-weight: 500;
     font-size: 14px;
+  }
+
+  &--actions {
+    display: flex;
+    justify-content: center;
+
+    div {
+      cursor: pointer;
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
   }
 
   &:first-of-type {
