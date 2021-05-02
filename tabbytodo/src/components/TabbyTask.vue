@@ -3,12 +3,24 @@
     <div class="tabby-task-header">
       <p>{{ title }}</p>
       <div class="actions">
-        <div class="actions-check">
-          <i class="fas fa-check-square icon" v-if="completed"></i>
-          <i class="far fa-square icon" v-if="!completed"></i>
+        <div
+          class="actions-check"
+          v-if="completed"
+          @click="toggleCompleted(id)"
+        >
+          <i class="fas fa-check-square icon"></i>
+        </div>
+        <div
+          class="actions-check"
+          v-if="!completed"
+          @click="toggleCompleted(id)"
+        >
+          <i class="far fa-square icon"></i>
         </div>
         <div class="actions-edit"><i class="fas fa-edit icon"></i></div>
-        <div class="actions-delete"><i class="fas fa-trash-alt icon"></i></div>
+        <div class="actions-delete" @click="deleteTodo">
+          <i class="fas fa-trash-alt icon"></i>
+        </div>
       </div>
     </div>
     <div class="tabby-task-description">
@@ -22,6 +34,14 @@
 <script>
 export default {
   props: ["title", "description", "id", "priority", "completed"],
+  methods: {
+    toggleCompleted(id) {
+      this.$emit("toggleCompleted", id);
+    },
+    deleteTodo(id) {
+      this.$emit("deleteTodo", id);
+    },
+  },
 };
 </script>
 

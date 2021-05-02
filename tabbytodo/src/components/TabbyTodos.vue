@@ -31,6 +31,8 @@
           important: todo.priority === 'important',
           urgent: todo.priority === 'urgent',
         }"
+        @toggleCompleted="toggleCompleted"
+        @deleteTodo="deleteTodo"
       />
       <todos-modal
         v-if="todoModalIsOpen"
@@ -88,7 +90,18 @@ export default {
       this.todos = [];
       this.updateLocalStorage();
     },
+    toggleCompleted(id) {
+      const index = this.todos.findIndex((todo) => todo.id === id);
+
+      this.todos[index].completed = !this.todos[index].completed;
+      // this.renderTodos();
+    },
+    deleteTodo(id) {
+      const index = this.todos.findIndex((todo) => todo.id === id);
+      this.todos.splice(index, 1);
+    },
   },
+  computed: {},
   mounted() {
     this.renderTodos();
   },
