@@ -1,0 +1,239 @@
+<template>
+  <teleport to="body">
+    <transition>
+      <div class="event-modal">
+        <div class="event-modal-header">
+          <p>Add Todo</p>
+        </div>
+
+        <div class="event-modal-form">
+          <form @submit.prevent="addEvent">
+            <div class="form-group">
+              <label for="todo">Todo Title:</label>
+              <input
+                type="text"
+                id="todo"
+                placeholder="Type event"
+                required="yes"
+                v-model="todoTitle"
+              />
+            </div>
+            <div class="form-group">
+              <label for="tim">Description:</label>
+              <input
+                type="text"
+                id="time"
+                placeholder="e.g. 5PM, Before lunch, ASAP"
+                v-model="todoDescription"
+              />
+            </div>
+
+            <div class="form-radio-group">
+              <p>Priority</p>
+
+              <div class="radio">
+                <div class="radio-group">
+                  <label for="low">Low</label>
+                  <input
+                    type="radio"
+                    id="low"
+                    value="low"
+                    placeholder="e.g. 5PM, Before lunch, ASAP"
+                    v-model="priority"
+                  />
+                </div>
+                <div class="radio-group">
+                  <label for="important">Important</label>
+                  <input
+                    type="radio"
+                    clicke
+                    value="important"
+                    name="priority"
+                    placeholder="e.g. 5PM, Before lunch, ASAP"
+                    v-model="priority"
+                  />
+                </div>
+                <div class="radio-group">
+                  <label for="urgent">Urgent</label>
+                  <input
+                    type="radio"
+                    id="urgent"
+                    value="urgent"
+                    placeholder="e.g. 5PM, Before lunch, ASAP"
+                    v-model="priority"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-buttons">
+              <main-btn @click="closeTodoModal" class="danger">Cancel</main-btn>
+              <main-btn type="submit" @click="addTodo"
+                ><i class="fas fa-plus"></i> Add</main-btn
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </transition>
+  </teleport>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      todoTitle: "",
+      todoDescription: "",
+      priority: "low",
+      completed: false,
+    };
+  },
+  methods: {
+    addEvent() {
+      const title = this.eventTitle;
+      const time = this.eventTime;
+
+      this.$emit("submitted", title, time);
+      this.eventTitle = "";
+      this.eventTime = "";
+    },
+    closeEventModal() {
+      this.eventTitle = "";
+      this.eventTime = "";
+      this.$emit("closeEventModal");
+    },
+    closeTodoModal() {
+      this.$emit("closeTodoModal");
+    },
+    addTodo() {
+      this.$emit(
+        "addTodo",
+        this.todoTitle,
+        this.todoDescription,
+        this.priority,
+        this.todoTitle
+      );
+      this.closeTodoModal();
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+// Transitions
+
+.event-modal {
+  width: 700px;
+  position: absolute;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  border: 4px solid hsl(202, 100%, 30%);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  animation: fade 0.15s;
+
+  &-header {
+    background: linear-gradient(to right bottom, #0093e9, #80d0c7);
+    padding: 12px 12px;
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  &-form {
+    padding: 16px 12px;
+
+    .form-group {
+      margin: 24px 0;
+    }
+
+    .form-buttons {
+      margin: 48px 0 24px;
+      display: flex;
+      justify-content: center;
+
+      a {
+        &:first-of-type {
+          margin-right: 24px;
+        }
+      }
+    }
+
+    form {
+      label {
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+      }
+
+      input {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 16px;
+        margin-top: 16px;
+        border: none;
+        outline: none;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 147, 233, 0.2);
+      }
+
+      .form-radio-group {
+        margin: 24px 0;
+
+        p {
+          color: #333;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .radio {
+          display: flex;
+          // margin-left: 24px;
+
+          .radio-group {
+            margin-left: 24px;
+            label {
+              color: #333;
+              display: inline-block;
+              font-size: 16px;
+              font-weight: 500;
+              margin-right: 12px;
+            }
+            input {
+              width: unset;
+              font-size: 16px;
+              padding: 12px 16px;
+              margin-top: 16px;
+              box-shadow: none;
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+</style>

@@ -1,10 +1,11 @@
 <template>
   <div class="tabby-task">
     <div class="tabby-task-header">
-      <p>Pet Smokey</p>
+      <p>{{ title }}</p>
       <div class="actions">
         <div class="actions-check">
-          <i class="fas fa-check-square icon"></i>
+          <i class="fas fa-check-square icon" v-if="completed"></i>
+          <i class="far fa-square icon" v-if="!completed"></i>
         </div>
         <div class="actions-edit"><i class="fas fa-edit icon"></i></div>
         <div class="actions-delete"><i class="fas fa-trash-alt icon"></i></div>
@@ -12,17 +13,16 @@
     </div>
     <div class="tabby-task-description">
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit ipsum
-        eligendi, cumque molestias saepe, inventore provident dolorem modi
-        incidunt dolore vitae quibusdam quis unde corporis consequatur, sapiente
-        explicabo porro sed.
+        {{ description }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["title", "description", "id", "priority", "completed"],
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +35,7 @@ export default {};
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   margin-top: 24px;
+  animation: fade 0.25s ease-in;
 
   &.urgent {
     border-left: 6px solid hsl(5, 55%, 56%);
@@ -78,6 +79,22 @@ export default {};
     p {
       line-height: 1.4;
     }
+  }
+}
+@keyframes fade {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(-100px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }
 </style>
