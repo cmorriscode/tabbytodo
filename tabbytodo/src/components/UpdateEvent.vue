@@ -13,7 +13,7 @@
               type="text"
               id="event"
               placeholder="Type event"
-              v-model="eventTitleUpdate"
+              v-model="title"
             />
           </div>
           <div class="form-group">
@@ -22,14 +22,16 @@
               type="text"
               id="time"
               placeholder="e.g. 5PM, Before lunch, ASAP"
-              v-model="eventTimeUpdate"
+              v-model="time"
             />
           </div>
 
           <div class="form-buttons">
-            <main-btn @click="closeUpdateModal">Cancel</main-btn>
-            <main-btn type="submit" @click="addEvent"
-              ><i class="fas fa-plus"></i> Add</main-btn
+            <main-btn @click="closeUpdateModal" type="button" class="danger"
+              >Cancel</main-btn
+            >
+            <main-btn type="submit" @click="updateEvent"
+              ><i class="fas fa-plus"></i> Update</main-btn
             >
           </div>
         </form>
@@ -40,27 +42,33 @@
 
 <script>
 export default {
-  // props: ["eventTitleUpdate", "eventTimeUpdate"],
+  props: ["eventTitleUpdate", "eventTimeUpdate", "eventIdUpdate"],
   data() {
     return {
-      // eventTitleUpdate: "",
-      // eventTimeUpdate: "",
+      title: "",
+      time: "",
+      id: null,
     };
   },
   methods: {
-    addEvent() {
-      const title = this.eventTitle;
-      const time = this.eventTime;
-
-      this.$emit("submitted", title, time);
-      this.eventTitle = "";
-      this.eventTime = "";
-    },
     closeUpdateModal() {
-      this.eventTitleUpdate = "";
-      this.eventTimeEvent = "";
+      this.title = "";
+      this.time = "";
+      this.id = null;
       this.$emit("closeUpdateModal");
     },
+    updateEvent() {
+      const id = this.id;
+      const title = this.title;
+      const time = this.time;
+      this.$emit("updateEventInfo", title, time, id);
+      this.closeUpdateModal();
+    },
+  },
+  mounted() {
+    this.title = this.eventTitleUpdate;
+    this.time = this.eventTimeUpdate;
+    this.id = this.eventIdUpdate;
   },
 };
 </script>
@@ -80,6 +88,7 @@ export default {
   border: 4px solid hsl(202, 100%, 30%);
   color: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  animation: fade 0.15s;
 
   &-header {
     background: linear-gradient(to right bottom, #0093e9, #80d0c7);
@@ -130,6 +139,19 @@ export default {
         border: 1px solid rgba(0, 147, 233, 0.2);
       }
     }
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 </style>

@@ -5,8 +5,12 @@
     </div>
     <p>You know what todo. Lock in. Tab in.</p>
     <div class="tagline">
-      <p class="current-day">{{ currentDay ? currentDay : "Loading..." }}</p>
-      <p class="current-time">{{ currentTime ? currentTime : "Loading..." }}</p>
+      <p class="current-day">
+        {{ currentDay ? currentDay : "Loading date..." }}
+      </p>
+      <p class="current-time">
+        {{ currentTime ? currentTime : "Loading time..." }}
+      </p>
     </div>
   </header>
 </template>

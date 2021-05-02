@@ -32,7 +32,7 @@
         :time="due.time"
         :id="due.id"
         @deleteEvent="deleteEvent"
-        @updateEvent="updateEvent"
+        @updateEvent="updateEvent(due.title, due.time, due.id)"
       />
     </div>
 
@@ -46,7 +46,9 @@
       v-if="updateModalOpen"
       :eventTitleUpdate="eventTitleUpdate"
       :eventTimeUpdate="eventTimeUpdate"
+      :eventIdUpdate="eventIdUpdate"
       @closeUpdateModal="closeUpdateModal"
+      @updateEventInfo="updateEventInfo"
     />
   </div>
 </template>
@@ -63,11 +65,12 @@ export default {
       updateModalOpen: false,
       eventTitleUpdate: "",
       eventTimeUpdate: "",
+      eventIdUpdate: null,
     };
   },
   methods: {
     renderDues() {
-      const storedDues = JSON.parse(localStorage.getItem("dues"));
+      const storedDues = JSON.parse(localStorage.getItem("tabbyDues"));
       if (storedDues) {
         this.dues = storedDues;
       } else {
@@ -78,7 +81,7 @@ export default {
       const event = { title: title, time: time, id: title };
 
       this.dues.push(event);
-      localStorage.setItem("dues", JSON.stringify(this.dues));
+      localStorage.setItem("tabbyDues", JSON.stringify(this.dues));
 
       this.closeEventModal();
     },
@@ -92,11 +95,19 @@ export default {
       this.dues.splice(index, 1);
       this.updateDues();
     },
-    updateEvent(title, time) {
+    updateEvent(title, time, id) {
       this.updateModalOpen = true;
-      // this.eventTitleUpdate = title;
-      // this.eventTimeTime = time;
-      this.updateProps(title, time);
+      this.eventTitleUpdate = title;
+      this.eventTimeUpdate = time;
+      this.eventIdUpdate = id;
+    },
+    updateEventInfo(title, time, id) {
+      const index = this.dues.findIndex((due) => due.id === id);
+      console.log(index);
+      this.dues[index].title = title;
+      this.dues[index].time = time;
+
+      this.closeUpdateModal();
     },
     updateDues() {
       localStorage.setItem("dues", JSON.stringify(this.dues));

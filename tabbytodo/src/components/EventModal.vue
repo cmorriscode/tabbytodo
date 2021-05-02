@@ -19,7 +19,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="time">What time?</label>
+              <label for="time"><i class="far fa-clock"></i> What time?</label>
               <input
                 type="text"
                 id="time"
@@ -29,7 +29,9 @@
             </div>
 
             <div class="form-buttons">
-              <main-btn @click="closeEventModal">Cancel</main-btn>
+              <main-btn @click="closeEventModal" class="danger"
+                >Cancel</main-btn
+              >
               <main-btn type="submit" @click="addEvent"
                 ><i class="fas fa-plus"></i> Add</main-btn
               >
