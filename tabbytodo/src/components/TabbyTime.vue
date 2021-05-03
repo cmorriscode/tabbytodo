@@ -73,7 +73,8 @@ export default {
       }
     },
     addEvent(title, time) {
-      const event = { title: title, time: time, id: title };
+      const randomId = new Date() * Math.random();
+      const event = { title: title, time: time, id: randomId };
 
       this.dues.push(event);
       localStorage.setItem("tabbyDues", JSON.stringify(this.dues));
@@ -144,7 +145,6 @@ export default {
       font-size: 18px;
       color: #444;
       font-weight: 600;
-      // color: hsl(173, 46%, 25%);
     }
   }
 
@@ -157,16 +157,12 @@ export default {
   }
 
   &-events {
-    // margin-top: 12px;
     padding: 8px;
     min-height: 64px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     grid-gap: 16px;
-
-    // border: 1px solid rgba(0, 0, 0, 0.1);
-    // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
     .placeholder {
       margin-left: 24px;
@@ -176,6 +172,56 @@ export default {
         color: #555;
       }
     }
+  }
+}
+
+@media (max-width: 980px) {
+  .tabby-time-events {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .tabby-time-events {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .tabby-time-buttons {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin: 0 12px 0 auto;
+    grid-gap: 12px;
+
+    a {
+      &:first-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .tabby-time-header {
+    flex-direction: column;
+  }
+
+  .tabby-time-events {
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabby-time-buttons {
+    margin: 24px auto;
+    margin-top: 24px;
+  }
+
+  .tabby-time-header {
+    // text-align: center;
   }
 }
 

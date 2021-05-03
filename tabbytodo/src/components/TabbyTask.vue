@@ -128,6 +128,31 @@ export default {
     }
   }
 }
+
+@media (max-width: 500px) {
+  .tabby-task-header {
+    flex-direction: column;
+    .actions {
+      margin-top: 12px;
+    }
+  }
+
+  .tabby-time-events {
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabby-time-buttons {
+    margin: 24px auto;
+    margin-top: 24px;
+  }
+
+  .tabby-time-header {
+    // text-align: center;
+  }
+}
+
 @keyframes fade {
   0% {
     transform: translateX(-200px);

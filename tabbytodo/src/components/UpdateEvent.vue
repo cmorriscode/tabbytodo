@@ -89,6 +89,7 @@ export default {
   color: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
   animation: fade 0.15s;
+  max-width: 100%;
 
   &-header {
     background: linear-gradient(to right bottom, #0093e9, #80d0c7);
@@ -139,6 +140,12 @@ export default {
         border: 1px solid rgba(0, 147, 233, 0.2);
       }
     }
+  }
+}
+
+@media (max-width: 720px) {
+  .event-modal {
+    max-width: 92%;
   }
 }
 @keyframes fade {

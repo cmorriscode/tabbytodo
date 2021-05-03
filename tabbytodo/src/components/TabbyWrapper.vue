@@ -22,4 +22,10 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 720px) {
+  .tabby-wrapper {
+    padding: 24px 8px;
+  }
+}
 </style>

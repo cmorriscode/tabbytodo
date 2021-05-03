@@ -41,4 +41,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 720px) {
+  .tabby-UI {
+    padding: 12px 8px 24px;
+  }
+}
 </style>

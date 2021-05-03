@@ -3,8 +3,8 @@
     <div class="logo">
       <p><span>Tabby</span>Todo</p>
     </div>
-    <p>You know what todo. Lock in. Tab in.</p>
-    <div class="tagline">
+    <p class="tagline">You know what todo. Lock in. Tab in.</p>
+    <div class="time">
       <p class="current-day">
         {{ currentDay ? currentDay : "Loading date..." }}
       </p>
@@ -63,16 +63,13 @@ export default {
       font-weight: 700;
       letter-spacing: 2px;
 
-      background: -webkit-linear-gradient(
-        hsl(202, 100%, 31%),
-        hsl(173, 46%, 51%)
-      );
+      background: -webkit-linear-gradient(#00649e, #49bcae);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
 
-  .tagline {
+  .time {
     p {
     }
     .current-time {
@@ -85,6 +82,24 @@ export default {
     .current-day {
       margin-bottom: 6px;
     }
+  }
+}
+
+@media (max-width: 980px) {
+  .logo p {
+    font-size: 20px !important;
+  }
+
+  .tagline {
+    display: none;
+  }
+
+  .time p {
+    font-size: 16px !important;
+  }
+
+  .current-day {
+    display: none;
   }
 }
 </style>

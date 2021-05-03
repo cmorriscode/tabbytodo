@@ -1,7 +1,6 @@
 <template>
   <div>
     <base-CSS></base-CSS>
-
     <tabby-wrapper />
   </div>
 </template>

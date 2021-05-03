@@ -7,25 +7,25 @@
         </div>
 
         <div class="event-modal-form">
-          <form @submit.prevent="addEvent">
+          <form @submit.prevent="addTodo">
             <div class="form-group">
               <label for="todo">Todo Title:</label>
               <input
                 type="text"
                 id="todo"
-                placeholder="Type event"
+                placeholder="Add todo title"
                 required="yes"
                 v-model="todoTitle"
               />
             </div>
             <div class="form-group">
-              <label for="tim">Description:</label>
-              <input
+              <p>Description:</p>
+              <textarea
                 type="text"
                 id="time"
-                placeholder="e.g. 5PM, Before lunch, ASAP"
+                placeholder="Provide additional information"
                 v-model="todoDescription"
-              />
+              ></textarea>
             </div>
 
             <div class="form-radio-group">
@@ -107,12 +107,13 @@ export default {
       this.$emit("closeTodoModal");
     },
     addTodo() {
+      const randomNum = new Date() * Math.random();
       this.$emit(
         "addTodo",
         this.todoTitle,
         this.todoDescription,
         this.priority,
-        this.todoTitle
+        randomNum
       );
       this.closeTodoModal();
     },
@@ -136,6 +137,7 @@ export default {
   color: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
   animation: fade 0.15s;
+  max-width: 100%;
 
   &-header {
     background: linear-gradient(to right bottom, #0093e9, #80d0c7);
@@ -186,6 +188,24 @@ export default {
         border: 1px solid rgba(0, 147, 233, 0.2);
       }
 
+      textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 16px;
+        margin-top: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 147, 233, 0.2);
+        outline: none;
+        height: 120px;
+        resize: none;
+      }
+
+      p {
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
       .form-radio-group {
         margin: 24px 0;
 
@@ -220,6 +240,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@media (max-width: 720px) {
+  .event-modal {
+    max-width: 92%;
   }
 }
 

@@ -58,6 +58,7 @@
 import TabbyTask from "./TabbyTask.vue";
 import TodosModal from "./TodosModal.vue";
 import UpdateTodos from "./UpdateTodos.vue";
+
 export default {
   data() {
     return {
@@ -133,6 +134,7 @@ export default {
       this.updateTodosIsOpen = false;
     },
     submitUpdate(title, description, priority, id) {
+      console.log(id);
       const index = this.todos.findIndex((todo) => todo.id === id);
       this.todos[index].title = title;
       this.todos[index].description = description;
@@ -205,6 +207,53 @@ export default {
       margin-top: 16px;
       padding: 12px 12px;
     }
+  }
+}
+
+@media (max-width: 720px) {
+  .tabby-todos-header {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .todos-buttons {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 12px 0 auto;
+    grid-gap: 12px;
+
+    a {
+      &:first-of-type {
+        margin-right: 0px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .tabby-todos-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tabby-time-events {
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todos-buttons {
+    margin: 24px auto;
+    margin-top: 24px;
+  }
+
+  .tabby-time-header {
+    // text-align: center;
   }
 }
 </style>

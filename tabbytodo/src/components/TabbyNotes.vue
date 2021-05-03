@@ -93,7 +93,7 @@ textarea {
   transition: all 0.35s;
 
   &:focus {
-    border: 2px solid hsl(202, 100%, 56%);
+    border: 2px solid hsl(44, 55%, 68%);
     box-shadow: 0 6px 12px #80d0c7;
   }
 }
