@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 .tabby-header {
   background: #fff;
-  // background: linear-gradient(to right bottom, #0093e9, #80d0c7);
+
   padding: 24px 12px;
   padding: 16px 12px;
   display: flex;
@@ -60,24 +60,20 @@ export default {
       font-size: 24px;
       font-size: 26px;
       font-weight: 600;
+      font-weight: 700;
       letter-spacing: 2px;
-      color: hsl(173, 46%, 20%);
 
-      // &:last-of-type {
-      //   font-size: 16px;
-      //   font-weight: 400;
-      //   letter-spacing: 0;
-      // }
-
-      span {
-        // color: hsl(60, 100%, 45%);
-      }
+      background: -webkit-linear-gradient(
+        hsl(202, 100%, 31%),
+        hsl(173, 46%, 51%)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
   .tagline {
     p {
-      // color: hsl(202, 100%, 30%);
     }
     .current-time {
       font-weight: 600;

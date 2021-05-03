@@ -18,6 +18,7 @@
         title="Add a todo!"
         description="Create a task so you can get it done."
         v-if="todos.length === 0"
+        isPlaceholder="true"
       />
       <tabby-task
         v-for="todo in todos"
@@ -26,6 +27,7 @@
         :key="todo.title"
         :id="todo.id"
         :completed="todo.completed"
+        :priority="todo.priority"
         :class="{
           low: todo.priority === 'low',
           important: todo.priority === 'important',
@@ -33,11 +35,21 @@
         }"
         @toggleCompleted="toggleCompleted"
         @deleteTodo="deleteTodo"
+        @updateTodo="updateTodo"
       />
       <todos-modal
         v-if="todoModalIsOpen"
         @closeTodoModal="closeTodoModal"
         @addTodo="addTodo"
+      />
+      <update-todos
+        v-if="updateTodosIsOpen"
+        :updateTitle="updateTitle"
+        :updateDesc="updateDesc"
+        :updatePrio="updatePrio"
+        :updateId="updateId"
+        @submitUpdate="submitUpdate"
+        @closeUpdate="closeUpdate"
       />
     </div>
   </div>
@@ -45,16 +57,23 @@
 <script>
 import TabbyTask from "./TabbyTask.vue";
 import TodosModal from "./TodosModal.vue";
+import UpdateTodos from "./UpdateTodos.vue";
 export default {
   data() {
     return {
       todos: [],
       todoModalIsOpen: false,
+      updateTodosIsOpen: false,
+      updateTitle: "",
+      updateDesc: "",
+      updatePrio: "",
+      updateId: "",
     };
   },
   components: {
     TabbyTask,
     TodosModal,
+    UpdateTodos,
   },
   methods: {
     renderTodos() {
@@ -81,7 +100,16 @@ export default {
         completed: false,
       };
       this.todos.push(todo);
+      this.sortTodos();
       this.updateLocalStorage();
+      this.closeTodoModal();
+    },
+    updateTodo(title, description, priority, id) {
+      this.toggleUpdate();
+      this.updateTitle = title;
+      this.updateDesc = description;
+      this.updatePrio = priority;
+      this.updateId = id;
     },
     updateLocalStorage() {
       localStorage.setItem("tabbyTodos", JSON.stringify(this.todos));
@@ -92,13 +120,40 @@ export default {
     },
     toggleCompleted(id) {
       const index = this.todos.findIndex((todo) => todo.id === id);
-
       this.todos[index].completed = !this.todos[index].completed;
-      // this.renderTodos();
     },
     deleteTodo(id) {
       const index = this.todos.findIndex((todo) => todo.id === id);
       this.todos.splice(index, 1);
+    },
+    toggleUpdate() {
+      this.updateTodosIsOpen = true;
+    },
+    closeUpdate() {
+      this.updateTodosIsOpen = false;
+    },
+    submitUpdate(title, description, priority, id) {
+      const index = this.todos.findIndex((todo) => todo.id === id);
+      this.todos[index].title = title;
+      this.todos[index].description = description;
+      this.todos[index].priority = priority;
+      this.todos[index].id = id;
+      this.closeUpdate();
+      this.sortTodos();
+      this.updateLocalStorage();
+    },
+    sortTodos() {
+      this.todos.sort((a, b) => {
+        if (a.priority === "urgent" && b.priority !== "urgent") {
+          return -1;
+        } else if (a.priority === "urgent" && b.priority === "urgent") {
+          return 0;
+        } else if (a.priority === "important" && b.priority === "low") {
+          return -1;
+        } else if (a.priority === "important" && b.priority === "important") {
+          return 0;
+        }
+      });
     },
   },
   computed: {},

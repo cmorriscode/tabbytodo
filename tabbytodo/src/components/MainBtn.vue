@@ -16,7 +16,6 @@ a {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 4px;
-  background: linear-gradient(to right bottom, #93d7cf, #80d0c7);
   background: linear-gradient(
     to right bottom,
     hsl(173, 46%, 56%),
@@ -24,7 +23,6 @@ a {
   );
   color: white;
   font-size: 16px;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: all 0.35s;
   font-weight: 500;

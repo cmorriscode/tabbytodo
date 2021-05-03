@@ -2,24 +2,29 @@
   <div class="tabby-task">
     <div class="tabby-task-header">
       <p>{{ title }}</p>
-      <div class="actions">
+      <div class="actions" v-if="!isPlaceholder">
         <div
           class="actions-check"
           v-if="completed"
           @click="toggleCompleted(id)"
         >
-          <i class="fas fa-check-square icon"></i>
+          <i class="fas fa-check-square icon icon-unchecked"></i>
         </div>
         <div
           class="actions-check"
           v-if="!completed"
           @click="toggleCompleted(id)"
         >
-          <i class="far fa-square icon"></i>
+          <i class="far fa-square icon icon-checked"></i>
         </div>
-        <div class="actions-edit"><i class="fas fa-edit icon"></i></div>
+        <div
+          class="actions-edit"
+          @click="updateTodo(title, description, priority, id)"
+        >
+          <i class="fas fa-edit icon-edit"></i>
+        </div>
         <div class="actions-delete" @click="deleteTodo">
-          <i class="fas fa-trash-alt icon"></i>
+          <i class="fas fa-trash-alt icon icon-delete"></i>
         </div>
       </div>
     </div>
@@ -33,10 +38,20 @@
 
 <script>
 export default {
-  props: ["title", "description", "id", "priority", "completed"],
+  props: [
+    "title",
+    "description",
+    "id",
+    "priority",
+    "completed",
+    "isPlaceholder",
+  ],
   methods: {
     toggleCompleted(id) {
       this.$emit("toggleCompleted", id);
+    },
+    updateTodo(title, description, priority, id) {
+      this.$emit("updateTodo", title, description, priority, id);
     },
     deleteTodo(id) {
       this.$emit("deleteTodo", id);
@@ -49,8 +64,6 @@ export default {
 .tabby-task {
   width: 100%;
   padding: 16px 20px;
-  // background: linear-gradient(to right bottom, #80d0c7, #0093e9);
-  // background: hsl(173, 46%, 60%);
   color: #333;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -73,9 +86,6 @@ export default {
     p {
       font-weight: 700;
       font-size: 20px;
-      color: hsl(215, 100%, 46%);
-      color: #333;
-      color: hsl(30, 41%, 44%);
       color: #333;
     }
 
@@ -84,9 +94,26 @@ export default {
 
       div {
         margin-right: 24px;
+        cursor: pointer;
 
         .icon {
           font-size: 20px;
+
+          &-unchecked {
+            color: hsl(202, 100%, 31%);
+          }
+
+          &-checked {
+            color: hsl(202, 100%, 31%);
+          }
+
+          &-edit {
+            color: hsl(43, 100%, 45%);
+          }
+
+          &-delete {
+            color: hsl(5, 55%, 56%);
+          }
         }
         &:last-of-type {
           margin-right: 0;

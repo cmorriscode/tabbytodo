@@ -17,13 +17,8 @@
         v-if="dues.length === 0"
         title="Add an event!"
         time="ASAP"
+        isPlaceholder="true"
       ></tabby-due>
-
-      <!-- <div class="placeholder">
-        <p v-if="dues.length === 0">
-          
-        </p>
-      </div> -->
 
       <tabby-due
         v-for="due in dues"
@@ -110,7 +105,7 @@ export default {
       this.closeUpdateModal();
     },
     updateDues() {
-      localStorage.setItem("dues", JSON.stringify(this.dues));
+      localStorage.setItem("tabbyDues", JSON.stringify(this.dues));
     },
     openEventModal() {
       this.modalOpen = true;

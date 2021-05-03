@@ -6,7 +6,7 @@
     <textarea
       placeholder="Write anything. Think through things. Preview ideas. It's important to remember that you won't remember. You ain't that good."
       v-model="notes"
-      @keypress="saveNotes"
+      @input="saveNotes"
     ></textarea>
     <!-- <div class="created-by">
       <img src="https://charlesmorris.com/img/cm_logo.ed1daa6a.png" alt="" />
@@ -59,8 +59,6 @@ export default {
   margin-top: 24px;
   margin-left: 48px;
   height: 650px;
-  width: 640px;
-  width: 640px;
   width: 520px;
   max-width: 100%;
   border: 6px solid hsl(173, 46%, 50%);

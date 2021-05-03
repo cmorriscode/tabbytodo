@@ -2,12 +2,12 @@
   <div class="tabby-due">
     <p class="tabby-due--header">{{ title }}</p>
     <p class="tabby-due--time">{{ time }}</p>
-    <div class="tabby-due--actions">
+    <div class="tabby-due--actions" v-if="!isPlaceholder">
       <div class="edit" @click="updateEvent(title, time)">
-        <i class="fas fa-edit"></i>
+        <i class="fas fa-edit icon icon-edit"></i>
       </div>
       <div class="delete" @click="deleteEvent(id)">
-        <i class="fas fa-trash-alt"></i>
+        <i class="fas fa-trash-alt icon icon-delete"></i>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ["title", "time", "id"],
+  props: ["title", "time", "id", "isPlaceholder"],
   methods: {
     deleteEvent(id) {
       this.$emit("deleteEvent", id);
@@ -40,13 +40,9 @@ export default {
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-left: 4px solid #80d0c7;
   border-radius: 4px;
-  // max-width: 180px;
-  // max-width: 225px;
-  min-width: 200px;
   min-width: 225px;
   max-width: 225px;
   &--header {
-    // background: linear-gradient(to right bottom, #80d0c7, #0093e9);
     font-size: 16px;
     font-size: 15px;
     font-weight: 600;
@@ -64,6 +60,14 @@ export default {
 
     div {
       cursor: pointer;
+      .icon {
+        &-edit {
+          color: hsl(43, 100%, 45%);
+        }
+        &-delete {
+          color: hsl(5, 55%, 56%);
+        }
+      }
       &:first-of-type {
         margin-right: 16px;
       }
@@ -71,7 +75,6 @@ export default {
   }
 
   &:first-of-type {
-    // margin-left: 0;
   }
   margin-left: 24px;
   margin-top: 12px;
