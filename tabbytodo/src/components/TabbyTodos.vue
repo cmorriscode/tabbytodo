@@ -6,7 +6,6 @@
         <main-btn @click="openTodoModal"
           ><i class="fas fa-plus"></i> Add Todo</main-btn
         >
-        <!-- <main-btn><i class="fas fa-broom"></i> Clear Completed</main-btn> -->
         <main-btn class="danger" @click="deleteTodos"
           ><i class="fas fa-trash-alt"></i> Delete All</main-btn
         >

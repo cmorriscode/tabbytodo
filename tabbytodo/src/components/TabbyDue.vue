@@ -31,8 +31,6 @@ export default {
 .tabby-due {
   animation: fade 0.25s ease-in;
   height: 100%;
-
-  // justify-content: center;
   align-items: center;
   display: inline-block;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);

@@ -23,7 +23,7 @@
         >
           <i class="fas fa-edit icon-edit"></i>
         </div>
-        <div class="actions-delete" @click="deleteTodo">
+        <div class="actions-delete" @click="deleteTodo(id)">
           <i class="fas fa-trash-alt icon icon-delete"></i>
         </div>
       </div>
