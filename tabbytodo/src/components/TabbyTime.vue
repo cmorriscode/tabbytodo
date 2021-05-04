@@ -104,6 +104,7 @@ export default {
       this.dues[index].time = time;
 
       this.closeUpdateModal();
+      this.updateDues();
     },
     updateDues() {
       localStorage.setItem("tabbyDues", JSON.stringify(this.dues));

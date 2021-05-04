@@ -121,10 +121,12 @@ export default {
     toggleCompleted(id) {
       const index = this.todos.findIndex((todo) => todo.id === id);
       this.todos[index].completed = !this.todos[index].completed;
+      this.updateLocalStorage();
     },
     deleteTodo(id) {
       const index = this.todos.findIndex((todo) => todo.id === id);
       this.todos.splice(index, 1);
+      this.updateLocalStorage();
     },
     toggleUpdate() {
       this.updateTodosIsOpen = true;

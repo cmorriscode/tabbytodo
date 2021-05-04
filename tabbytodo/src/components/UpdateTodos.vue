@@ -3,7 +3,7 @@
     <transition>
       <div class="event-modal">
         <div class="event-modal-header">
-          <p>Add Todo</p>
+          <p>Update Todo</p>
         </div>
 
         <div class="event-modal-form">
