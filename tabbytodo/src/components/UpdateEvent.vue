@@ -78,7 +78,7 @@ export default {
 
 .event-modal {
   width: 700px;
-  position: absolute;
+  position: fixed;
   background: #fff;
   top: 50%;
   left: 50%;
